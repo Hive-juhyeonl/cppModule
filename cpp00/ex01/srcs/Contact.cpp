@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 03:00:12 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/09/27 03:09:37 by JuHyeon          ###   ########.fr       */
-/*                                                                            */
+/* */
+/* :::      ::::::::   */
+/* Contact.cpp                                        :+:      :+:    :+:   */
+/* +:+ +:+         +:+     */
+/* By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+        */
+/* +#+#+#+#+#+   +#+           */
+/* Created: 2025/09/27 03:00:12 by JuHyeon           #+#    #+#             */
+/* Updated: 2025/09/29 03:00:00 by JuHyeon          ###   ########.fr       */
+/* */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
@@ -22,7 +22,7 @@ Contact::Contact(int contactId)
       phoneNumber(""), 
       darkestSecret("") {}
 
-// 소멸자: 동적 할당된 자원이 없으므로 비워둡니다.
+// 소멸자
 Contact::~Contact() {}
 
 // *** Setter 구현 ***
@@ -62,7 +62,11 @@ std::string Contact::getDarkestSecret() const {
     return this->darkestSecret;
 }
 
-// 모든 필수 필드(여기서는 대표적으로 3개)가 채워져 있는지 확인
+// 모든 5개 필드가 채워져 있는지 확인합니다. (요구 사항: 빈 필드가 없어야 함)
 bool Contact::isFilled() const {
-    return !this->firstName.empty() && !this->lastName.empty() && !this->phoneNumber.empty();
+    return !this->firstName.empty() 
+        && !this->lastName.empty() 
+        && !this->nickname.empty() 
+        && !this->phoneNumber.empty() 
+        && !this->darkestSecret.empty();
 }
