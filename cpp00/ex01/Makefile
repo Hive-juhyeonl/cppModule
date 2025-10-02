@@ -1,40 +1,36 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/10/02 18:48:07 by JuHyeon           #+#    #+#              #
+#    Updated: 2025/10/02 20:41:02 by JuHyeon          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = phonebook
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-C++         = c++
-C++_FLAGS   = -Wall -Wextra -Werror -std=c++98 -pedantic -Iincludes
+SRCS = main.cpp PhoneBook.cpp Contact.cpp
+OBJS = $(SRCS:.cpp=.o)
 
-SRC_DIR     = ./srcs
-OBJ_DIR     = ./objs
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-SRC = \
-	$(SRC_DIR)/PhoneBook.cpp \
-	$(SRC_DIR)/main.cpp \
-	$(SRC_DIR)/Contact.cpp
-
-OBJ = $(SRC:$(SRC_DIR)%=$(OBJ_DIR)/%)
-OBJ := $(OBJ:.cpp=.o)
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@echo "Compiling $(NAME)..."
-	@$(C++) $(C++_FLAGS) $(OBJ) -o $(NAME)
-	@echo "Done"
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(@D)
-	@echo "Compiling $<..."
-	@$(C++) $(C++_FLAGS) -c $< -o $@
-
-clean:
-	@rm -rf $(OBJ_DIR)
-	@echo "Cleaned up all object files"
+clean: 
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "Cleaned up $(NAME)"
+	rm -f $(NAME)
 
 re: fclean all
-	@echo "Remade everything"
 
 .PHONY: all clean fclean re
