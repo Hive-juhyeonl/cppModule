@@ -6,13 +6,42 @@
 /*   By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 20:48:50 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/10/03 13:12:27 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/10/03 13:58:42 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
+
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
+
+Account::Account(int initial_deposit)
+{
+	this->_accountIndex = Account::_nbAccounts;
+	this->_amount = initial_deposit;
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
+
+	Account::_nbAccounts++;
+	Account::_totalAmount += initial_deposit;
+
+	Account::_displayTimestamp();
+	std::cout << " index:" << this->_accountIndex
+				<< ";amount:" << this->_amount
+				<< ";created" << std::endl;
+}
+
+Account::~Account(void)
+{
+	Account::_displayTimestamp();
+	std::cout << " index:" << this->_accountIndex
+				<< ";amount:" << this->_amount
+				<< ";closed" << std::endl;
+}
 
 void	Account::_displayTimestamp(void)
 {
@@ -81,7 +110,7 @@ void    Account::displayStatus(void) const
 {
 	_displayTimestamp();
 	std::cout << " index:" << _accountIndex
-				<< ";total:" << _amount
+				<< ";amount:" << _amount
 				<< ";deposits:" << _nbDeposits
 				<< ";withdrawals:" << _nbWithdrawals << std::endl;
 }
