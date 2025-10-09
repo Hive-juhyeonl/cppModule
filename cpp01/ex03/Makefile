@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/08 15:35:12 by JuHyeon           #+#    #+#              #
-#    Updated: 2025/10/09 14:01:45 by juhyeonl         ###   ########.fr        #
+#    Created: 2025/10/09 14:10:33 by juhyeonl          #+#    #+#              #
+#    Updated: 2025/10/09 14:51:31 by juhyeonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombieHorde
+NAME = violence
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98 -Iinclude
@@ -19,8 +19,9 @@ SRC_DIR	= ./src
 OBJ_DIR	= ./obj
 
 SRCS = $(SRC_DIR)/main.cpp \
-		$(SRC_DIR)/zombieHorde.cpp \
-		$(SRC_DIR)/Zombie.cpp
+		$(SRC_DIR)/Weapon.cpp \
+		$(SRC_DIR)/HumanA.cpp \
+		$(SRC_DIR)/HumanB.cpp
 		
 OBJ = $(SRCS:$(SRC_DIR)%=$(OBJ_DIR)/%)
 OBJ := $(OBJ:.cpp=.o)
