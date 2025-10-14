@@ -6,19 +6,20 @@
 #    By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/09 14:10:33 by juhyeonl          #+#    #+#              #
-#    Updated: 2025/10/11 00:45:46 by JuHyeon          ###   ########.fr        #
+#    Updated: 2025/10/14 03:51:58 by JuHyeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = replace
+NAME = harl
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98 -Iinclude
 
-SRC_DIR	= ./src
+SRC_DIR	= ./srcs
 OBJ_DIR	= ./obj
 
-SRCS = $(SRC_DIR)/main.cpp
+SRCS = $(SRC_DIR)/main.cpp \
+		$(SRC_DIR)/Harl.cpp
 
 OBJ = $(SRCS:$(SRC_DIR)%=$(OBJ_DIR)/%)
 OBJ := $(OBJ:.cpp=.o)

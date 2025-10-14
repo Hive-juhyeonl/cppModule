@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 14:53:44 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/10/08 15:03:19 by JuHyeon          ###   ########.fr       */
+/*   Created: 2025/10/12 20:15:43 by JuHyeon           #+#    #+#             */
+/*   Updated: 2025/10/12 20:18:15 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+# include <iostream>
+# include <string>
 
-int main()
+class Harl
 {
-    // Dynamic allocation
-    Zombie* heap_zombie = newZombie("HeapZombie");
-    // heap zombie action
-    heap_zombie->announce();
-    // heap zombie kill
-    delete heap_zombie;
-    // stack zombie
-    randomChump("StackZombie");
-    return (0);
-}
+private:
+	void	debug(void);
+	void	info(void);
+	void	warning(void);
+	void	error(void);
+
+public:
+	Harl();
+	~Harl();
+	void	complain(std::string level);
+};
+
+#endif
