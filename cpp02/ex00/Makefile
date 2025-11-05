@@ -5,23 +5,23 @@
 #                                                     +:+ +:+         +:+      #
 #    By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/26 21:21:09 by JuHyeon           #+#    #+#              #
-#    Updated: 2025/10/09 13:55:48 by juhyeonl         ###   ########.fr        #
+#    Created: 2025/10/09 14:10:33 by juhyeonl          #+#    #+#              #
+#    Updated: 2025/10/16 13:15:37 by juhyeonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = fixed
 
-CC         = c++
-FLAGS   = -Wall -Wextra -Werror -std=c++98 -pedantic
+CC		= c++
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -Iinclude
 
-SRC_DIR     = ./src
-OBJ_DIR     = ./obj
+SRC_DIR	= ./srcs
+OBJ_DIR	= ./obj
 
-SRC = \
-	$(SRC_DIR)/megaphone.cpp
+SRCS = $(SRC_DIR)/main.cpp \
+		$(SRC_DIR)/Fixed.cpp
 
-OBJ = $(SRC:$(SRC_DIR)%=$(OBJ_DIR)/%)
+OBJ = $(SRCS:$(SRC_DIR)%=$(OBJ_DIR)/%)
 OBJ := $(OBJ:.cpp=.o)
 
 all: $(NAME)
