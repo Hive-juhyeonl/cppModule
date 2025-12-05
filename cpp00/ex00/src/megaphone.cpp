@@ -6,26 +6,32 @@
 /*   By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 00:41:59 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/09/26 21:26:10 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/12/05 17:25:09 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-using namespace std;
-
-int main(int ac, char **av) {
-	if (ac > 1)
+int main(int argc, char **argv)
+{
+	if (argc == 1)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+	else
 	{
-		for (int i = 1; i < ac; i++)
+		for (int i = 1; i < argc; ++i)
 		{
-			for(int j = 0; av[i][j] != '\0'; j++)
-				av[i][j] = (char)std::toupper(av[i][j]);
-			std::cout << av[i];
+			for (int j = 0; argv[i][j] != '\0'; ++j)
+			{
+				char c = argv[i][j];
+				if (c >= 'a' && c <= 'z')
+					std::cout << (char)(c - 32);
+				else
+					std::cout << c;
+			}
+			if (i < argc - 1)
+			   std::cout << ' ';
 		}
 		std::cout << std::endl;
 	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return 0;
+	return (0);
 }

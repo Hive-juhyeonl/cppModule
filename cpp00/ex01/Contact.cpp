@@ -6,7 +6,7 @@
 /*   By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:48:43 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/10/02 18:01:52 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/12/05 17:43:50 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,42 @@
 
 Contact::Contact()
 {
-	this->firstName = "";
-	this->lastName = "";
-	this->nickName = "";
-	this->phoneNumber = "";
-	this->darkestSecret = "";
 }
 
-Contact::~Contact() {}
-
-std::string Contact::getFirstName() const { return (this->firstName); }
-std::string Contact::getLastName() const { return (this->lastName); }
-std::string Contact::getNickName() const { return (this->nickName); }
-std::string Contact::getPhoneNumber() const { return (this->phoneNumber); }
-std::string Contact::getDarkestSecret() const { return (this->darkestSecret); }
-
-bool	Contact::isEmpty() const { return (this->firstName.empty()); }
-
-void	Contact::setDetails()
+Contact::~Contact()
 {
-	while (this->firstName.empty())
-	{
-		std::cout << "First Name : ";
-		std::getline(std::cin, this->firstName);
-	}
-	while (this->lastName.empty())
-	{
-		std::cout << "Last Name : ";
-		std::getline(std::cin, this->lastName);
-	}
-	while (this->nickName.empty())
-	{
-		std::cout << "Nick Name : ";
-		std::getline(std::cin, this->nickName);
-	}
-	while (this->phoneNumber.empty())
-	{
-		std::cout << "Phone Number : ";
-		std::getline(std::cin, this->phoneNumber);
-	}
-	while (this->darkestSecret.empty())
-	{
-		std::cout << "Darkest Secret : ";
-		std::getline(std::cin, this->darkestSecret);
-	}
-	std::cout << "successfully Added." << std::endl;
+}
+
+void Contact::setContact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret)
+{
+	this->_firstName = firstName;
+	this->_lastName = lastName;
+	this->_nickname = nickname;
+	this->_phoneNumber = phoneNumber;
+	this->_darkestSecret = darkestSecret;
+}
+
+std::string Contact::getFirstName() const
+{
+	return this->_firstName;
+}
+
+std::string Contact::getLastName() const
+{
+	return this->_lastName;
+}
+
+std::string Contact::getNickname() const
+{
+	return this->_nickname;
+}
+
+std::string Contact::getPhoneNumber() const
+{
+	return this->_phoneNumber;
+}
+
+std::string Contact::getDarkestSecret() const
+{
+	return this->_darkestSecret;
 }

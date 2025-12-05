@@ -6,44 +6,29 @@
 #    By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/26 21:21:09 by JuHyeon           #+#    #+#              #
-#    Updated: 2025/09/26 21:23:37 by JuHyeon          ###   ########.fr        #
+#    Updated: 2025/12/05 17:28:19 by JuHyeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+RM = rm -rf
 
-C++         = c++
-C++_FLAGS   = -Wall -Wextra -Werror -std=c++98 -pedantic
-
-SRC_DIR     = ./src
-OBJ_DIR     = ./obj
-
-SRC = \
-	$(SRC_DIR)/megaphone.cpp
-
-OBJ = $(SRC:$(SRC_DIR)%=$(OBJ_DIR)/%)
-OBJ := $(OBJ:.cpp=.o)
+SRC = src/megaphone.cpp
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "Compiling $(NAME)..."
-	@$(C++) $(C++_FLAGS) $(OBJ) -o $(NAME)
-	@echo "Done"
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(@D)
-	@$(C++) $(C++_FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJ_DIR)
-	@echo "Cleaned up all object files"
+	$(RM) $(OBJ)
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "Cleaned up $(NAME)"
+fclean:
+	$(RM) $(OBJ) $(NAME)
 
 re: fclean all
-	@echo "Remade everything"
 
 .PHONY: all clean fclean re
