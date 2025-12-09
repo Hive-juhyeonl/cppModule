@@ -1,39 +1,22 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/08 14:43:14 by JuHyeon           #+#    #+#              #
-#    Updated: 2025/10/08 14:47:24 by JuHyeon          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME        = program
+CXX         = c++
+CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
+RM          = rm -f
 
-NAME = zombie
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+SRCS        = main.cpp Zombie.cpp
+OBJS        = $(SRCS:.cpp=.o)
 
-SRCS = main.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		Zombie.cpp
-OBJS = $(SRCS:.cpp=.o)
+all:        $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME):    $(OBJS)
+			$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+clean:
+			$(RM) $(OBJS)
 
-all: $(NAME)
+fclean:     clean
+			$(RM) $(NAME)
 
-clean: 
-	rm -f $(OBJS)
+re:         fclean all
 
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY:     all clean fclean re

@@ -1,29 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <JuHyeon@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 14:53:44 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/10/08 15:03:19 by JuHyeon          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Zombie.hpp"
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+int main() {
+    Zombie* heapZombie = newZombie("HeapZ");
+    heapZombie->announce();
+    delete heapZombie;
 
-int main()
-{
-    // Dynamic allocation
-    Zombie* heap_zombie = newZombie("HeapZombie");
-    // heap zombie action
-    heap_zombie->announce();
-    // heap zombie kill
-    delete heap_zombie;
-    // stack zombie
-    randomChump("StackZombie");
-    return (0);
+    randomChump("StackZ");
+
+    return 0;
 }
